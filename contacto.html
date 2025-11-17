@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Handbol Femení Paiporta</title>
+
+  <!-- Fuentes e iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="icon" type="image/png" href="img/logo_png.jpg">
+  
+  <!-- Scripts -->
+  <script defer src="js/script2.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#contact-main">Saltar al contenido</a>
+
+<header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index2.html" class="brand-link">
+          <img src="img/logo_png.jpg" alt="Logo Handbol Femení Paiporta" class="brand-logo">
+          <div class="brand-text">
+            <h1>Handbol Femení Paiporta</h1>
+            <p class="tagline">
+              <a href="club2.html#club">Club</a> · 
+              <a href="patrocinadores2.html">Patrocinadores</a> · 
+              <a href="club2.html#torneos">Torneos</a>
+            </p>
+
+          </div>
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index2.html" class="nav-link activo">Inicio</a></li>
+          <li><a href="club2.html" class="nav-link">Club</a></li>
+          <li><a href="patrocinadores2.html" class="nav-link">Patrocinadores</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+          <li><a href="noticias.html" class="nav-link">Noticias</a></li>
+        </ul>
+      </nav>
+    </div>
+</header>
+
+
+  <main id="contact-main" class="container contacto-page">
+    <section class="contact-card card">
+      <div class="contact-grid">
+        <!-- Info contacto -->
+        <div class="contact-info">
+          <h2>Contacto</h2>
+          <p>¿Tienes dudas? Escríbenos o llámanos. Estamos encantadas de atenderte.</p>
+
+          <ul class="contact-list">
+            <li><i class="fa-regular fa-envelope"></i> <a href="mailto:handbolfemenipaiporta@gmail.com">handbolfemenipaiporta@gmail.com</a></li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+34610824036">+34 610 824 036</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> Paiporta, Valencia</li>
+          </ul>
+
+          <div class="contact-social">
+            <a href="https://www.instagram.com/handbolfemenipaiporta" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/14MVwYFeQBa/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <form class="formulario" action="https://formspree.io/f/movkkaqp" method="POST" aria-label="Formulario de contacto">
+          <h3>Envíanos un mensaje</h3>
+
+          <label for="nombre" class="sr-only">Nombre</label>
+          <div class="input-group">
+            <i class="fa-regular fa-user input-icon"></i>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+          </div>
+
+          <label for="email" class="sr-only">Email</label>
+          <div class="input-group">
+            <i class="fa-regular fa-envelope input-icon"></i>
+            <input id="email" name="email" type="email" placeholder="Tu email" required>
+          </div>
+
+          <label for="mensaje" class="sr-only">Mensaje</label>
+          <div class="input-group">
+            <i class="fa-solid fa-message input-icon"></i>
+            <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <button type="reset" class="btn btn-ghost">Borrar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <img src="img/logo_png.jpg" alt="Logo" class="footer-logo">
+        <p>&copy; 2025 Handbol Femení Paiporta</p>
+      </div>
+
+      <div class="footer-right">
+        <div class="social">
+          <a href="https://www.instagram.com/handbolfemenipaiporta" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/14MVwYFeQBa/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Botón para volver arriba -->
+  <button id="scrollTopBtn" title="Volver arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</body>
+</html>

@@ -1,0 +1,1436 @@
+/* ===========================
+   Paleta y variables
+   Azul marino + rosa pastel + blanco humo
+   =========================== */
+:root{
+  --navy: #07203c;        /* azul marino oscuro */
+  --accent: #f3a6c1;      /* rosa pastel */
+  --accent-2: #ffb6d5;    /* rosa claro secundario */
+  --muted: #f5f6f7;       /* blanco humo */
+  --card-bg: #ffffff;
+  --text: #0c1820;
+  --soft: #9aa6b2;
+  --glass: rgba(255,255,255,0.6);
+  --max-width: 1100px;
+  --radius: 12px;
+}
+
+/* ===========================
+   Reset / Base
+   =========================== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--muted) 0%, #ffffff 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Skip link */
+.skip-link{
+  position: absolute;
+  left:-9999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  left:10px;
+  top:10px;
+  width:auto;
+  height:auto;
+  background:var(--navy);
+  color:white;
+  padding:8px 12px;
+  border-radius:6px;
+  z-index:9999;
+}
+
+/* Container */
+.container{
+  width:90%;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+
+/* ===========================
+   Header / Nav
+   =========================== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
+
+/* Brand */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand-link{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit}
+.brand-logo{
+  width:56px;
+  height:56px;
+  border-radius:10px;
+  object-fit:cover;
+  box-shadow: 0 6px 18px rgba(7,32,60,0.12);
+}
+.brand-text h1{
+  margin:0;
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--navy);
+}
+.tagline{
+  margin:0;
+  font-size:0.8rem;
+  color:var(--soft);
+}
+
+/* Nav */
+.nav{ display:flex; align-items:center; gap:22px; }
+.nav-list{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center;}
+.nav-link{
+  text-decoration:none;
+  color:var(--navy);
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:8px;
+  transition:all .18s ease;
+}
+.nav-link:hover, .nav-link:focus, .nav-link.activo{
+  background: linear-gradient(90deg, rgba(243,166,193,0.14), rgba(255,182,213,0.08));
+  color:var(--navy);
+  transform:translateY(-2px);
+}
+
+/* Mobile nav toggle */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:none;
+  font-size:1.15rem;
+  cursor:pointer;
+  color:var(--navy);
+}
+
+/* ===========================
+   Hero / Banner
+   =========================== */
+.hero{
+  position:relative;
+  height:92vh;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin-bottom:28px;
+}
+
+.fade-slider{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.fade-slider .slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center center;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity 1.4s ease, transform 10s linear;
+}
+.fade-slider .slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* overlay contenido */
+.hero-overlay{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+  max-width:1000px;
+  padding:28px;
+  margin-top:6vh;
+  background:linear-gradient(180deg, rgba(7,32,60,0.65), rgba(7,32,60,0.30));
+  border-radius:14px;
+  box-shadow: 0 12px 40px rgba(7,32,60,0.35);
+}
+.hero-title{
+  margin:0 0 12px;
+  font-size:2.1rem;
+  color:var(--muted);
+}
+.hero-sub{
+  margin:0 0 18px;
+  color:rgba(243,166,193,0.95);
+  font-weight:500;
+}
+
+/* buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:active{ transform:translateY(1px) }
+.btn-primary{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:var(--navy);
+  box-shadow: 0 8px 22px rgba(243,166,193,0.2);
+}
+.btn-ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.18);
+  color:white;
+}
+
+/* ===========================
+   Cards & Sections
+   =========================== */
+.card{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  padding:18px;
+  margin:22px 0;
+  box-shadow: 0 8px 30px rgba(3,12,24,0.04);
+}
+.card-header h2{ margin:0 0 6px;}
+.card-body p{ margin:0; color:var(--soft) }
+
+.historia .card-body h2,
+.palmares .card-body h2,
+.recap .card-body h2{
+  color:var(--navy);
+}
+
+/* Equipos grid */
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(1,1fr);
+  gap:18px;
+  margin-top:14px;
+}
+.team-card{
+  display:flex;
+  gap:12px;
+  border-radius:12px;
+  overflow:hidden;
+  align-items:stretch;
+  background:linear-gradient(180deg, #fff, #fbfbfd);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.team-card:hover{
+  transform:translateY(-6px);
+  box-shadow: 0 18px 40px rgba(3,12,24,0.08);
+}
+.team-image{
+  width:38%;
+  min-height:130px;
+  background-size:cover;
+  background-position:center center;
+}
+.team-content{
+  padding:12px 16px;
+  flex:1;
+}
+.team-content h3{ margin:0 0 6px; color:var(--navy); }
+.team-content p{ margin:0; color:var(--soft); font-size:0.95rem; }
+
+/* galería */
+.galeria-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.galeria-grid img{
+  width:100%;
+  display:block;
+  border-radius:10px;
+  height:180px;
+  object-fit:cover;
+}
+
+/* ===========================
+   Contacto (form)
+   =========================== */
+.contacto-page .contact-card{
+  padding:0;
+  overflow:hidden;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+}
+.contact-info{
+  padding:22px;
+  background:linear-gradient(180deg, rgba(7,32,60,0.04), rgba(243,166,193,0.02));
+}
+.contact-info h2{ color:var(--navy); margin-top:0; }
+.contact-list{ list-style:none; padding:0; margin:12px 0 0; color:var(--soft) }
+.contact-list li{ display:flex; gap:10px; align-items:center; margin:10px 0; }
+.contact-list a{ color:var(--navy); text-decoration:none; font-weight:600; }
+
+.contact-social a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px; height:44px;
+  border-radius:10px;
+  background:linear-gradient(180deg, #fff, #fff);
+  margin-right:8px;
+  box-shadow: 0 6px 18px rgba(7,32,60,0.06);
+  color:var(--navy);
+  text-decoration:none;
+}
+
+/* formulario */
+.formulario{
+  padding:24px;
+  background:linear-gradient(180deg, #ffffff, #fafcff);
+}
+.formulario h3{ margin-top:0; color:var(--navy) }
+.input-group{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+  background:#fff;
+  border-radius:10px;
+  padding:8px 10px;
+  border:1px solid rgba(7,32,60,0.06);
+}
+.input-icon{ color:var(--soft); font-size:0.95rem; width:28px; text-align:center; }
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario textarea{
+  border:0;
+  outline:0;
+  font-size:0.95rem;
+  width:100%;
+  padding:8px 4px;
+  background:transparent;
+  color:var(--text);
+}
+.form-actions{
+  display:flex;
+  gap:10px;
+  margin-top:8px;
+}
+.btn-ghost{
+  border:1px solid rgba(7,32,60,0.12);
+  background:transparent;
+  color:var(--navy);
+}
+
+/* ===========================
+   Footer
+   =========================== */
+/* ======= Footer mejorado ======= */
+.site-footer {
+  margin-top: 40px;
+  background: linear-gradient(90deg, var(--navy), #0c2340);
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-logo {
+  width: 50px;
+  border-radius: 8px;
+}
+
+.footer-left p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ---- Iconos de redes ---- */
+.social {
+  display: flex;
+  gap: 18px;
+}
+
+.social a {
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social a:hover {
+  color: var(--accent); /* rosa pastel */
+  transform: scale(1.2);
+}
+
+/* ---- Responsive footer ---- */
+@media (max-width: 700px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (min-width:720px){
+  .cards-grid{ grid-template-columns:repeat(2,1fr); }
+  .galeria-grid{ grid-template-columns:repeat(3,1fr); }
+  .contact-grid{ grid-template-columns:360px 1fr; }
+}
+
+@media (min-width:1000px){
+  .cards-grid{ grid-template-columns:repeat(4,1fr); }
+  .hero-title{ font-size:2.6rem; }
+  .nav-toggle{ display:none; }
+}
+
+/* Small screens */
+@media (max-width:719px){
+  .nav{ display:none; }
+  .nav-toggle{ display:inline-flex; }
+  .hero{ height:76vh; min-height:420px; }
+  .cards-grid{ grid-template-columns:repeat(1,1fr); }
+  .galeria-grid{ grid-template-columns:repeat(2,1fr); }
+  .hero-overlay{ padding:16px; margin:0 10px; }
+  .footer-inner{ flex-direction:column; text-align:center; gap:8px; padding:12px 0; }
+  .team-image{ width:40%; min-height:120px; }
+}
+
+/* ===========================
+   Utilities
+   =========================== */
+.sr-only{
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+
+/* ======= Escuela Deportiva ======= */
+/* ======= Escuela Deportiva (ajustada) ======= */
+.Escuela.Deportiva {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.Escuela.Deportiva h2 {
+  margin-bottom: 15px;
+  color: var(--navy);
+}
+
+.Escuela.Deportiva img {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  margin-top: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.Escuela.Deportiva img:hover {
+  transform: scale(1.03);
+}
+
+
+/* ======= Torneos ======= */
+.torneo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.torneo-gallery img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.torneo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* ======= Patrocinadores ======= */
+.patrocinadores {
+  text-align: center;
+  padding: 40px 0;
+}
+.patrocinadores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.patrocinadores-grid img {
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(7,32,60,0.08);
+  padding: 10px;
+  object-fit: contain;
+}
+
+
+@media (max-width: 600px) {
+  .Escuela.Deportiva img {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+/* ======= Equipos (mejorado) ======= */
+.equipos {
+  padding: 40px 20px;
+}
+
+.equipos h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--navy);
+}
+
+/* ======= Equipos - versión vertical ======= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.team-image {
+  width: 100%;
+  height: 300px; /* 👈 más grande */
+  background-size: cover;
+  background-position: center;
+}
+
+.team-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.team-content h3 {
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.team-content p {
+  font-size: 1rem;
+  color: var(--soft);
+}
+
+/* ======= HEADER y NAV (para contacto y coherencia general) ======= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.tagline {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--soft);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--navy);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.activo {
+  background: linear-gradient(90deg, rgba(243,166,193,0.2), rgba(255,182,213,0.15));
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+
+/* Botón hamburguesa (oculto en escritorio) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--navy);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    cursor: pointer;
+  }
+}
+
+/* ======= Resumen de Temporadas ======= */
+.recap {
+  padding: 60px 20px 80px;
+  text-align: center;
+}
+
+.recap h2 {
+  color: var(--navy);
+  margin-bottom: 15px;
+}
+
+.recap p {
+  color: var(--soft);
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.galeria-grid img {
+  width: 100%;
+  max-width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ======= Botones principales ======= */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Botón principal (rosa pastel) */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(243, 166, 193, 0.4);
+}
+
+.btn-primary:hover {
+  background: #e18ba9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(243, 166, 193, 0.6);
+}
+
+/* Botón secundario (CONTACTO) - estilo mejorado */
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  margin-left: 10px;
+  backdrop-filter: blur(2px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ======= Tagline ======= */
+.tagline {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--soft);
+}
+
+.tagline a {
+  color: var(--soft);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.tagline a:hover {
+  color: var(--accent);
+}
+
+/* ======= Patrocinadores ======= */
+.patrocinadores {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.patrocinadores h2 {
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.patrocinadores p {
+  color: var(--soft);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-size: 1rem;
+}
+
+/* GRID general */
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Tarjeta base */
+.logo {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+}
+
+.logo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0.98);
+  transition: filter 0.3s ease;
+}
+
+.logo:hover img {
+  filter: brightness(1);
+}
+
+/* Tamaños diferenciados */
+.logo.grande {
+  grid-column: span 2;
+  max-width: 300px;
+  padding: 25px;
+}
+
+.logo.mediano {
+  max-width: 220px;
+}
+
+.logo.pequeno {
+  max-width: 180px;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+  .logo.grande {
+    grid-column: span 1;
+    max-width: 250px;
+  }
+}
+/* ======= Patrocinadores ======= */
+.patrocinadores {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.patrocinadores h2 {
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.patrocinadores p {
+  color: var(--soft);
+  max-width: 600px;
+  margin: 0 auto 50px;
+  font-size: 1rem;
+}
+
+/* Contenedor principal */
+.patro-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Cada fila */
+.fila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Tarjeta base */
+.logo {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+}
+
+.logo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0.98);
+  transition: filter 0.3s ease;
+}
+
+.logo:hover img {
+  filter: brightness(1);
+}
+
+/* Tamaños específicos */
+.logo.grande {
+  width: 280px;
+  height: 150px;
+  padding: 25px;
+}
+
+.logo.mediano {
+  width: 220px;
+  height: 130px;
+}
+
+.logo.pequeno {
+  width: 180px;
+  height: 120px;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+  .fila {
+    gap: 20px;
+  }
+  .logo.grande {
+    width: 250px;
+    height: 130px;
+  }
+  .logo.mediano {
+    width: 190px;
+    height: 110px;
+  }
+  .logo.pequeno {
+    width: 150px;
+    height: 100px;
+  }
+}
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0.98);
+  transition: filter 0.3s ease;
+}
+
+.logo.grande {
+  width: 280px;
+  height: 150px;
+  padding: 25px;
+}
+
+.logo.mediano {
+  width: 220px;
+  height: 130px;
+}
+
+.logo.pequeno {
+  width: 180px;
+  height: 120px;
+}
+
+
+/* ======= Botón Colaboradores ======= */
+.colaboradores-link {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-colaboradores {
+  display: inline-block;
+  background: #1e3a8a; /* azul marino suave */
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-colaboradores:hover {
+  background: #2a4cb3;
+  box-shadow: 0 6px 25px rgba(30, 58, 138, 0.5);
+  transform: translateY(-3px);
+}
+
+
+/* ======= Noticias ======= */
+.noticias {
+  padding: 80px 20px;
+  background-color: #fafafa;
+}
+
+.titulo-seccion {
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.intro {
+  text-align: center;
+  color: var(--soft);
+  max-width: 750px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* ==== Cada noticia vertical ==== */
+.noticias-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.noticia {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.noticia:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagen más grande */
+.noticia img {
+  width: 45%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido más amplio */
+.noticia-contenido {
+  flex: 1;
+  padding: 30px 40px;
+  text-align: left;
+}
+
+.noticia-contenido h3 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.noticia-contenido p {
+  color: var(--soft);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.fecha {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .noticia {
+    flex-direction: column;
+  }
+
+  .noticia img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .noticia-contenido {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .noticia-contenido h3 {
+    font-size: 1.3rem;
+  }
+}
+
+
+/* ======= TORNEOS (versión vertical amplia) ======= */
+.club-torneos {
+  padding: 80px 20px 100px;
+  background: #fafafa;
+}
+
+.club-torneos h2 {
+  text-align: center;
+  color: var(--navy);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.club-torneos p {
+  text-align: center;
+  color: var(--soft);
+  max-width: 750px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Lista vertical */
+.torneos-lista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Cada torneo */
+.torneo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.torneo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.torneo img {
+  width: 45%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.torneo-contenido {
+  flex: 1;
+  padding: 30px 40px;
+  text-align: left;
+}
+
+.torneo-contenido h3 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.torneo-contenido p {
+  color: var(--soft);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .torneo {
+    flex-direction: column;
+  }
+
+  .torneo img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .torneo-contenido {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .torneo-contenido h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ======= Botón "Ver más" en equipos ======= */
+.btn-vermas {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-vermas:hover {
+  background: #e18ba9;
+  transform: translateY(-2px);
+}
+
+/* ======= EQUIPO DETALLE ======= */
+.equipo-detalle {
+  padding-bottom: 80px;
+}
+
+.intro-equipo {
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+.intro-equipo h2 {
+  color: var(--navy);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.intro-equipo p {
+  color: var(--soft);
+  max-width: 800px;
+  margin: 0 auto 15px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.foto-equipo img.foto-grande {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.jugadoras {
+  padding: 20px 20px 40px;
+  text-align: center;
+}
+
+.jugadoras h3 {
+  color: var(--navy);
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.lista-jugadoras {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.lista-jugadoras li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--soft);
+}
+
+/* ======= RESUMEN DE TEMPORADA ======= */
+.resumen-temporada {
+  padding: 80px 20px 100px;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.resumen-temporada h2 {
+  color: var(--navy);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.resumen-temporada .intro {
+  color: var(--soft);
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Diseño general */
+.resumen-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Cada bloque de resumen */
+.resumen-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resumen-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagen */
+.resumen-img {
+  flex: 1;
+  min-width: 45%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.resumen-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.resumen-item:hover .resumen-img img {
+  transform: scale(1.05);
+}
+
+/* Texto */
+.resumen-texto {
+  flex: 1;
+  padding: 30px 40px;
+  text-align: left;
+}
+
+.resumen-texto h3 {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.resumen-texto p {
+  color: var(--soft);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .resumen-item {
+    flex-direction: column;
+  }
+
+  .resumen-img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .resumen-texto {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .resumen-texto h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ======= BOTÓN VOLVER ARRIBA ======= */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: none; /* oculto al inicio */
+  transition: all 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background: #e18ba9;
+  transform: translateY(-4px);
+}
+
+/* Ajuste para móvil */
+@media (max-width: 600px) {
+  #scrollTopBtn {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+

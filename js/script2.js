@@ -5,16 +5,6 @@
    - Pequeñas mejoras de accesibilidad
 */
 
-/* ---------- Toggle menú móvil ---------- */
-const navToggleButtons = document.querySelectorAll('.nav-toggle');
-navToggleButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const nav = document.querySelector('.nav');
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    if (nav) nav.style.display = expanded ? '' : 'block';
-  });
-});
 
 /* ---------- Fade slider ---------- */
 (function slider(){
@@ -93,4 +83,12 @@ scrollTopBtn.addEventListener('click', () => {
     top: 0,
     behavior: 'smooth'
   });
+});
+
+// Menú responsive
+const navToggle = document.querySelector(".nav-toggle");
+const nav = document.querySelector(".nav");
+
+navToggle.addEventListener("click", () => {
+  nav.classList.toggle("open");
 });

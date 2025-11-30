@@ -1434,3 +1434,86 @@ body{
   }
 }
 
+/* ============================
+   RESPONSIVE NAVBAR (MÓVIL)
+   ============================ */
+
+@media (max-width: 768px) {
+
+    /* Contenedor del header */
+    .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* El título ocupa demasiado → reducimos tamaño */
+    .brand-text h1 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+
+    /* Ocultamos el tagline para que no rompa la cabecera */
+    .tagline {
+        display: none;
+    }
+
+    /* Ocultar menú mientras está cerrado */
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: black;
+        display: none;
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 99;
+    }
+
+    /* Mostrar menú cuando se abra */
+    .nav.open {
+        display: flex;
+    }
+
+    /* Items en vertical */
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-link {
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        display: block;
+    }
+
+    /* Botón hamburguesa visible */
+    .nav-toggle {
+        display: block;
+        font-size: 1.9rem;
+        background: none;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+/* Asegurar que en PC se vea normal */
+@media (min-width: 769px) {
+    .nav {
+        display: block !important;
+        position: static;
+        background: none;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+}

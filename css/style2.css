@@ -1375,23 +1375,23 @@ img {
 
 @media (max-width: 768px) {
   .nav a {
-    font-size: 16px;        /* antes era más grande */
+    font-size: 14px;        /* antes era más grande */
     padding: 10px 0;       /* reduce altura */
   }
 
   .nav {
-    padding: 12px 16px;    /* menos padding general */
+    padding: 10px 14px;    /* menos padding general */
   }
 }
 
 @media (max-width: 768px) {
   .brand-text h1 {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.2;
   }
 
   .brand-text .tagline {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   .brand-logo {

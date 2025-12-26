@@ -1345,7 +1345,7 @@ img {
     flex-direction: column;
     background: #fff;
     position: fixed;
-    top: 72px;
+    top: 70px;
     left: 0;
     right: 0;
     padding: 20px;
@@ -1398,5 +1398,19 @@ img {
   .brand-logo {
     width: 42px;
     height: auto;
+  }
+}
+.nav {
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

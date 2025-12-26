@@ -85,14 +85,25 @@ scrollTopBtn.addEventListener('click', () => {
   });
 });
 
-/* ---------- Toggle menú móvil ---------- */
-const navToggleButtons = document.querySelectorAll('.nav-toggle');
-navToggleButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const nav = document.querySelector('.nav');
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    if (nav) nav.style.display = expanded ? '' : 'block';
+/* ---------- Toggle menú móvil (FIX) ---------- */
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
+
+if (navToggle && nav) {
+  navToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
   });
+}
+
+/* Cerrar menú al volver a escritorio */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    nav.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
 });
+
 

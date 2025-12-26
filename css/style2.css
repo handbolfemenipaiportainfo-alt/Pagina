@@ -1345,10 +1345,10 @@ img {
     flex-direction: column;
     background: #fff;
     position: fixed;
-    top: 0px;
+    top: 80px;
     left: 0;
     right: 0;
-    padding: 90px 20px 20px;
+    padding: 20px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
   }
 

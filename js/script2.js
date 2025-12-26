@@ -57,14 +57,7 @@ if (contactoForm) {
 }
 
 /* ---------- Accessibility: close mobile nav on resize to desktop ---------- */
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 720) {
-    const nav = document.querySelector('.nav');
-    if (nav) nav.style.display = '';
-    const toggles = document.querySelectorAll('.nav-toggle');
-    toggles.forEach(t => t.setAttribute('aria-expanded', 'false'));
-  }
-});
+
 
 
 // ======= BOTÓN VOLVER ARRIBA =======
@@ -85,25 +78,16 @@ scrollTopBtn.addEventListener('click', () => {
   });
 });
 
-/* ---------- Toggle menú móvil (FIX) ---------- */
-const navToggle = document.querySelector('.nav-toggle');
+const navToggleButtons = document.querySelectorAll('.nav-toggle');
 const nav = document.querySelector('.nav');
 
-if (navToggle && nav) {
-  navToggle.addEventListener('click', () => {
+navToggleButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = nav.classList.contains('active');
     nav.classList.toggle('active');
-
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
+    btn.setAttribute('aria-expanded', String(!isOpen));
   });
-}
-
-/* Cerrar menú al volver a escritorio */
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) {
-    nav.classList.remove('active');
-    navToggle.setAttribute('aria-expanded', 'false');
-  }
 });
+
 
 

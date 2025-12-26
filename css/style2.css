@@ -1345,11 +1345,12 @@ img {
     flex-direction: column;
     background: #fff;
     position: fixed;
-    top: 80px;
+    top: 72px;
     left: 0;
     right: 0;
     padding: 20px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.05);
   }
 
   .nav.active {

@@ -1335,13 +1335,17 @@ img {
   }
 }
 
+.nav {
+  z-index: 1000;
+}
+
 @media (max-width: 768px) {
   .nav {
     display: none;
     flex-direction: column;
     background: #fff;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 96px;
     left: 0;
     right: 0;
     padding: 20px;
@@ -1361,13 +1365,10 @@ img {
 @media (min-width: 769px) {
   .nav {
     display: flex;
+    position: static;
   }
 
   .nav-toggle {
     display: none;
   }
-}
-
-.nav {
-  z-index: 1000;
 }

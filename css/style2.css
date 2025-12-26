@@ -1341,7 +1341,7 @@ img {
     flex-direction: column;
     background: #fff;
     position: absolute;
-    top: 75px;
+    top: 100%;
     left: 0;
     right: 0;
     padding: 20px;

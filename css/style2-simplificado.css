@@ -1,0 +1,749 @@
+/* =====================================================
+   STYLE2.CSS - Versión unificada y optimizada
+   - Conserva transiciones / sombras / visual original
+   - Corrige imagen grande en "Escuela" para móvil
+   - Corrige menú responsive y header sticky
+   - Elimina reglas duplicadas y conflictos
+   ===================================================== */
+
+/* =========================
+   Variables
+   ========================= */
+:root{
+  --navy: #07203c;
+  --accent: #f3a6c1;
+  --accent-2: #ffb6d5;
+  --muted: #f5f6f7;
+  --card-bg: #ffffff;
+  --text: #0c1820;
+  --soft: #9aa6b2;
+  --glass: rgba(255,255,255,0.6);
+  --max-width: 1100px;
+  --radius: 12px;
+  --shadow-1: 0 6px 18px rgba(2,6,23,0.06);
+  --shadow-2: 0 8px 30px rgba(3,12,24,0.04);
+}
+
+/* =========================
+   Reset / Base
+   ========================= */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body{
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--muted) 0%, #ffffff 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  -webkit-font-feature-settings: "liga" 1;
+}
+
+/* Helpers */
+.container{
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Accessibility: skip link */
+.skip-link{
+  position: absolute;
+  left:-9999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  left:10px;
+  top:10px;
+  width:auto;
+  height:auto;
+  background:var(--navy);
+  color:white;
+  padding:8px 12px;
+  border-radius:6px;
+  z-index:9999;
+}
+
+/* =========================
+   Header / Nav (unificado)
+   ========================= */
+/* Header full width & sticky */
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+  box-shadow: var(--shadow-1);
+}
+
+/* Inner layout */
+.header-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:12px 0;
+}
+
+/* Brand */
+.brand { display:flex; align-items:center; gap:12px; }
+.brand-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+.brand-logo{
+  width:55px;
+  height:55px;
+  border-radius:10px;
+  object-fit:cover;
+  box-shadow: 0 6px 18px rgba(7,32,60,0.12);
+}
+
+/* Headings */
+.brand-text h1{ margin:0; font-size:1.05rem; font-weight:600; color:var(--navy); }
+.tagline{ margin:0; font-size:0.8rem; color:var(--soft); }
+
+/* NAV */
+.nav{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.nav-list{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
+.nav-link{
+  text-decoration:none;
+  color:var(--navy);
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:8px;
+  transition: all .18s ease;
+}
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.activo{
+  background: linear-gradient(90deg, rgba(243,166,193,0.2), rgba(255,182,213,0.15));
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+
+/* Mobile nav toggle */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:none;
+  font-size:1.2rem;
+  cursor:pointer;
+  color:var(--navy);
+}
+
+/* Mobile nav overlay (when active) */
+.nav.mobile {
+  display: none;
+}
+
+/* We'll control .nav.active on JS / button toggle — see below rules for mobile */
+
+/* =========================
+   Hero / Banner
+   ========================= */
+.hero{
+  position:relative;
+  height:92vh;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin-bottom:28px;
+}
+
+.fade-slider{ position:absolute; inset:0; z-index:0; }
+.fade-slider .slide{
+  position:absolute; inset:0;
+  background-size:cover;
+  background-position:center center;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity 1.4s ease, transform 10s linear;
+}
+.fade-slider .slide.active{ opacity:1; transform:scale(1); }
+
+/* overlay contenido */
+.hero-overlay{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+  max-width:1000px;
+  padding:28px;
+  margin-top:6vh;
+  background:linear-gradient(180deg, rgba(7,32,60,0.65), rgba(7,32,60,0.30));
+  border-radius:14px;
+  box-shadow: 0 12px 40px rgba(7,32,60,0.35);
+}
+.hero-title{ margin:0 0 12px; font-size:2.1rem; color:var(--muted); }
+.hero-sub{ margin:0 0 18px; color:rgba(243,166,193,0.95); font-weight:500; }
+
+/* =========================
+   Buttons (preserve transitions)
+   ========================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease, color .2s ease;
+}
+.btn:active{ transform:translateY(1px); }
+
+.btn-primary{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:var(--navy);
+  box-shadow: 0 8px 22px rgba(243,166,193,0.2);
+}
+.btn-ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.18);
+  color:white;
+}
+
+/* Secondary ghost variant used in forms, desktop */
+.btn-ghost--inverse{
+  border:1px solid rgba(7,32,60,0.12);
+  background:transparent;
+  color:var(--navy);
+}
+
+/* =========================
+   Cards & Sections
+   ========================= */
+.card{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  padding:18px;
+  margin:22px 0;
+  box-shadow: var(--shadow-2);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{ transform: translateY(-4px); }
+
+/* headings inside cards */
+.card h2{ margin:0 0 12px; color:var(--navy); }
+
+/* =========================
+   Equipos (grid)
+   ========================= */
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap:18px;
+  margin-top:14px;
+}
+
+/* Team card base (single version) */
+.team-card{
+  display:flex;
+  gap:12px;
+  border-radius:12px;
+  overflow:hidden;
+  align-items:stretch;
+  background:linear-gradient(180deg, #fff, #fbfbfd);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.team-card:hover{
+  transform:translateY(-6px);
+  box-shadow: 0 18px 40px rgba(3,12,24,0.08);
+}
+
+/* Team image used as background block (kept for your HTML) */
+.team-image{
+  width:38%;
+  min-height:130px;
+  background-size:cover;
+  background-position:center center;
+  flex-shrink:0;
+}
+
+/* For pages using vertical version (team cards as blocks) we handle via later rules */
+.team-content{
+  padding:12px 16px;
+  flex:1;
+}
+.team-content h3{ margin:0 0 6px; color:var(--navy); }
+.team-content p{ margin:0; color:var(--soft); font-size:0.95rem; }
+
+/* =========================
+   Galería
+   ========================= */
+.galeria-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.galeria-grid img{
+  width:100%;
+  display:block;
+  border-radius:10px;
+  height:180px;
+  object-fit:cover;
+}
+
+/* =========================
+   Contacto / Form
+   ========================= */
+.contact-grid{ display:grid; grid-template-columns: 1fr; gap:18px; }
+.contact-info{
+  padding:22px;
+  background:linear-gradient(180deg, rgba(7,32,60,0.04), rgba(243,166,193,0.02));
+}
+.contact-list{ list-style:none; padding:0; margin:12px 0 0; color:var(--soft); }
+.contact-list li{ display:flex; gap:10px; align-items:center; margin:10px 0; }
+.contact-list a{ color:var(--navy); text-decoration:none; font-weight:600; }
+
+/* Form styles */
+.formulario{
+  padding:24px;
+  background:linear-gradient(180deg, #ffffff, #fafcff);
+}
+.input-group{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+  background:#fff;
+  border-radius:10px;
+  padding:8px 10px;
+  border:1px solid rgba(7,32,60,0.06);
+}
+.input-group .input-icon{ color:var(--soft); font-size:0.95rem; width:28px; text-align:center; }
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario textarea{
+  border:0;
+  outline:0;
+  font-size:0.95rem;
+  width:100%;
+  padding:8px 4px;
+  background:transparent;
+  color:var(--text);
+}
+
+/* =========================
+   Footer
+   ========================= */
+.site-footer {
+  margin-top: 40px;
+  background: linear-gradient(90deg, var(--navy), #0c2340);
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+.footer-inner {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  width:90%;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+.footer-logo { width:50px; border-radius:8px; }
+
+/* Social icons */
+.social{ display:flex; gap:18px; }
+.social a { color:#fff; font-size:1.5rem; transition: transform 0.3s ease, color 0.3s ease; }
+.social a:hover{ color:var(--accent); transform: scale(1.2); }
+
+/* =========================
+   Responsive grids + behaviour
+   ========================= */
+@media (min-width:720px){
+  .cards-grid{ grid-template-columns: repeat(2, 1fr); }
+  .galeria-grid{ grid-template-columns: repeat(3, 1fr); }
+  .contact-grid{ grid-template-columns: 360px 1fr; }
+}
+
+/* Larger screens: show more columns */
+@media (min-width:1000px){
+  .cards-grid{ grid-template-columns: repeat(4, 1fr); }
+  .hero-title{ font-size:2.6rem; }
+  .nav-toggle{ display:none; }
+}
+
+/* =========================
+   MOBILE: main adjustments
+   ========================= */
+@media (max-width: 768px) {
+  /* Nav toggle visible */
+  .nav-toggle { display: inline-flex; }
+
+  /* Hide desktop nav, use mobile expanded nav controlled by .nav.active (toggle via JS) */
+  .nav {
+    display: none;
+  }
+  .nav.active {
+    display:flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    padding: 16px 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    z-index: 1100;
+  }
+
+  /* Adjust hero height for smaller screens */
+  .hero{ height:76vh; min-height:420px; }
+
+  /* Cards grid single column */
+  .cards-grid{ grid-template-columns: repeat(1, 1fr); }
+  .galeria-grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .hero-overlay{ padding:16px; margin:0 10px; }
+
+  .footer-inner{ flex-direction:column; text-align:center; gap:8px; padding:12px 0; }
+
+  /* Team image smaller for compact horizontal team-card layout */
+  /* Restaurar tamaño grande en equipos horizontales */
+.team-image {
+  width: 50%;
+  min-height: 160px;
+}
+
+
+  /* Ensure any overflowing content is clipped and images scale */
+  img, .team-image { max-width: 100%; height: auto; }
+}
+
+/* =========================
+   Mobile / small fixes for header overlapping nav
+   ========================= */
+/* Make sure header has no weird width issues */
+.site-header { width: 100%; }
+
+/* If the JS toggles .nav.active, it will show overlay below header; ensure body content not hidden */
+body { -webkit-overflow-scrolling: touch; }
+
+/* =========================
+   Resumen / cards grid variants (used elsewhere)
+   ========================= */
+.recap { padding:60px 20px 80px; text-align:center; }
+.recap h2 { color:var(--navy); margin-bottom:15px; }
+.recap p { color:var(--soft); max-width:700px; margin:0 auto 30px; font-size:1rem; line-height:1.6; }
+
+/* Galeria variante (cards with shadow) */
+.galeria-grid img { border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform .3s ease, box-shadow .3s ease; }
+.galeria-grid img:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+/* =========================
+   Equipo - vertical card variant
+   (some pages use a vertical card layout, keep variant here)
+   ========================= */
+.team-card.vertical {
+  flex-direction: column;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.team-card.vertical .team-image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+.team-card.vertical .team-content { padding:20px; text-align:center; }
+
+/* =========================
+   Resumen / detalle component
+   ========================= */
+.resumen-temporada { padding:80px 20px 100px; background-color:#fafafa; text-align:center; }
+.resumen-grid { display:flex; flex-direction:column; gap:60px; }
+.resumen-item { display:flex; align-items:center; justify-content:center; background:#fff; border-radius:18px; box-shadow:0 6px 20px rgba(0,0,0,0.08); overflow:hidden; transition: transform .3s ease, box-shadow .3s ease; }
+.resumen-item:hover { transform: translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.12); }
+.resumen-img { flex:1; min-width:45%; height:300px; overflow:hidden; }
+.resumen-img img { width:100%; height:100%; object-fit:cover; object-position:center; transition: transform .4s ease; }
+.resumen-item:hover .resumen-img img { transform: scale(1.05); }
+
+/* =========================
+   Noticias / Torneos (kept)
+   ========================= */
+.noticias { padding:80px 20px; background-color:#fafafa; }
+.noticias-grid{ display:flex; flex-direction:column; gap:60px; }
+.noticia { display:flex; flex-direction:row; align-items:center; background:#fff; border-radius:20px; box-shadow:0 6px 20px rgba(0,0,0,0.08); overflow:hidden; max-width:1000px; width:100%; transition: transform .3s ease, box-shadow .3s ease; }
+.noticia img { width:45%; height:100%; object-fit:cover; }
+.noticia-contenido { flex:1; padding:30px 40px; text-align:left; }
+@media (max-width:768px) {
+  .noticia { flex-direction: column; }
+  .noticia img { width:100%; height:250px; }
+  .noticia-contenido { padding:25px; text-align:center; }
+}
+
+/* =========================
+   Patrocinadores / logos
+   ========================= */
+.patrocinadores { padding:70px 20px; text-align:center; }
+/* Grid cuadrado y proporcionado como estaba antes */
+.patrocinadores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.logo { background:#fff; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; padding:20px; transition: transform .3s ease, box-shadow .3s ease; }
+.logo img{ max-width:100%; height:auto; object-fit:contain; filter: brightness(0.98); transition: filter .3s ease; }
+.logo:hover{ transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+.logo.grande { width: 280px; height: 150px; padding: 25px; }
+.logo.mediano { width: 220px; height: 130px; }
+.logo.pequeno { width: 180px; height: 120px; }
+
+
+/* =========================
+   Scroll top button
+   ========================= */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  display: none;
+  transition: all .3s ease;
+}
+#scrollTopBtn:hover { background: #e18ba9; transform: translateY(-4px); }
+
+/* =========================
+   Utilities
+   ========================= */
+.sr-only{ position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+/* =========================
+   ESCUELA DEPORTIVA - compatibility (keep both selectors)
+   Explanation: your HTML uses .Escuela-Deportiva but you previously had
+   .Escuela.Deportiva in CSS. We provide both so no page breaks.
+   This is the section that contained the very large image: we force it to
+   behave responsively and not overflow the layout on mobile.
+   ========================= */
+.Escuela-Deportiva,
+.Escuela.Deportiva {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-2);
+  overflow: hidden; /* avoid image overflow */
+}
+
+/* heading & spacing */
+.Escuela-Deportiva h2,
+.Escuela.Deportiva h2 {
+  margin-bottom: 15px;
+  color: var(--navy);
+}
+
+/* Image safety:
+   - max-width:100% so it never grows past container
+   - height:auto to keep aspect ratio
+   - object-fit:contain so important details are visible
+   - display:block + margin auto centers it
+   - limit max-height on small screens to avoid huge vertical overflow
+*/
+.Escuela-Deportiva img,
+.Escuela.Deportiva img {
+  display: block;
+  margin: 10px auto 0;
+  max-width: 100%;
+  width: 100%;            /* allow it to shrink to container width */
+  height: auto;
+  object-fit: contain;    /* preserve whole poster */
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform .3s ease;
+}
+
+/* On hover keep the gentle zoom but don't break layout */
+.Escuela-Deportiva img:hover,
+.Escuela.Deportiva img:hover {
+  transform: scale(1.02);
+}
+
+/* Mobile safety limits (very important) */
+@media (max-width: 720px) {
+  .Escuela-Deportiva img,
+  .Escuela.Deportiva img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: 60vh; /* prevents poster pushing content very far down */
+  }
+
+  /* If you have vertical team-cards on some pages, ensure consistent layout */
+  .team-card.vertical .team-image { height: 220px; }
+}
+
+/* =========================
+   Small extra fixes for images used as background blocks
+   (some pages set background-image inline on .team-image)
+   ========================= */
+.team-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 120px;
+}
+
+/* If an inline background image is very tall (poster-like), ensure it scales on small screens */
+@media (max-width: 720px) {
+  .team-image {
+    min-height: 120px;
+    /* allow background to scale: keep block width responsive */
+    width: 100%;
+  }
+}
+
+
+/* Enlaces globales sin subrayado ni azul */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+/* --- Mostrar las fotos de equipos completas --- */
+.team-image {
+  width: 55%;                   /* tamaño equilibrado, ni pequeño ni gigante */
+  min-height: 200px;            /* altura suficiente para ver la foto entera */
+  background-size: contain !important; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;    /* fondo blanco detrás para que no queden huecos */
+}
+
+
+/* --- Aumentar tamaño de las tarjetas de equipos --- */
+.team-card {
+  min-height: 260px;   /* antes ~200px, ahora más alta */
+}
+
+/* La imagen tendrá espacio real para crecer */
+.team-image {
+  width: 55%;
+  min-height: 220px;   /* antes 200px; más espacio para que la foto se vea grande */
+}
+/* --- Restaurar diseño original de las tarjetas de equipos --- */
+
+/* Distribución original: imagen izquierda, texto derecha */
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #fff;
+}
+
+/* Imagen exactamente como estaba antes, SOLO un poco más ancha */
+.team-image {
+  width: 50%;                 /* antes 45%, ahora un poco más grande */
+  height: 180px;              /* altura original */
+  background-size: cover;     /* recorte suave, estética original */
+  background-position: center;
+  border-radius: 12px;        /* borde original */
+  flex-shrink: 0;             /* no se encoje */
+}
+
+/* El texto vuelve a verse completo */
+.team-content {
+  width: 50%;
+}
+
+.team-content h3 {
+  white-space: normal;
+  overflow: visible;
+}
+
+
+
+/* =========================
+   Clean up duplicate / conflicting rules previously present
+   (this section intentionally keeps only one authoritative style set)
+   ========================= */
+
+/* Nothing here to change visually - reserved for future safe overrides */
+
+/* =========================
+   Notes for JS (no changes to HTML required)
+   - The mobile menu should toggle the class .active on the .nav element
+   - The .nav-toggle button already exists in HTML and can toggle via:
+       document.querySelector('.nav-toggle').addEventListener('click', () => {
+         document.querySelector('.nav').classList.toggle('active');
+       });
+   This CSS expects that behavior.
+   ========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===========================
+   FIX Escuela Deportiva
+   =========================== */
+
+.Escuela-Deportiva img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Evita que la imagen rompa el responsive */
+.Escuela-Deportiva {
+  overflow: hidden;
+}
+
+/* Ajuste específico móvil */
+@media (max-width: 768px) {
+  .Escuela-Deportiva img {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+.site-header {
+  width: 100%;
+  left: 0;
+  right: 0;
+}

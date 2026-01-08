@@ -56,6 +56,8 @@
       <div class="slide" style="background-image:url('img/PuebaBanner3.jpeg')"></div>
       <div class="slide" style="background-image:url('img/PruebaBanner2.jpeg')"></div>
       <div class="slide" style="background-image:url('img/toledo1.jpeg')"></div>
+      <div class="slide" style="background-image:url('img/pruebabanner6.jpeg')"></div>
+      <div class="slide" style="background-image:url('img/pruebabanner7.jpeg')"></div>
     </div>
 
     <div class="hero-overlay container">
@@ -87,7 +89,7 @@
       <h2>Equipos</h2>
       <div class="cards-grid">
         <article class="team-card">
-          <div class="team-image" style="background-image:url('img/infatilautonomico1.jpeg')"></div>
+          <div class="team-image" style="background-image:url('img/infatilautonomico3.jpeg')"></div>
           <div class="team-content">
             <h3>Infantil Autonómico</h3>
             <p>Nacidas en 2012 y 2013 • Formación técnica y competición.</p>
@@ -125,7 +127,7 @@
     <!-- ======= Resumen de Temporadas ======= -->
     <section id="resumen" class="resumen-temporada">
       <div class="container">
-        <h2>Resumen de Temporada</h2>
+        <h2>Resumen de Temporada 2024/2025</h2>
         <p class="intro">
           Un repaso a los mejores momentos de nuestra temporada: esfuerzo, superación y alegría en cada partido.
           Aquí os mostramos algunos de los momentos más especiales de nuestros equipos.
@@ -135,7 +137,7 @@
 
           <article class="resumen-item">
             <div class="resumen-img">
-              <img src="./img/a" alt="Celebración Cadete Autonómico">
+              <img src="./img/celebracion1.jpg" alt="Celebración Cadete Autonómico">
             </div>
             <div class="resumen-texto">
               <h3>Cadete Autonómico</h3>
@@ -146,10 +148,10 @@
 
           <article class="resumen-item">
             <div class="resumen-img">
-              <img src="./img/entrenadores.jpeg" alt="Torneo Valencia Cup">
+              <img src="./img/infantilsonia2024.jpg" alt="Torneo Valencia Cup">
             </div>
             <div class="resumen-texto">
-              <h3>Juvenil</h3>
+              <h3>Infantil Preferete Azul</h3>
               <p>Las más veteranas cerraron el año con grandes resultados y un espíritu competitivo admirable. ¡Su
                 entrega dentro y fuera de la pista ha sido ejemplar!</p>
             </div>
@@ -157,7 +159,7 @@
 
           <article class="resumen-item">
             <div class="resumen-img">
-              <img src="./img/img3.jpeg" alt="Infantil Autonómico en acción">
+              <img src="./img/infanltilA2024.jpeg" alt="Infantil Autonómico en acción">
             </div>
             <div class="resumen-texto">
               <h3>Infantil Autonómico</h3>
@@ -165,6 +167,16 @@
                 equipo, destacando su compromiso en cada entrenamiento.</p>
             </div>
           </article>
+          <article class="resumen-item">
+            <div class="resumen-img">
+              <img src="./img/entrenadores.jpeg" alt="Infantil Autonómico en acción">
+            </div>
+            <div class="resumen-texto">
+              <h3>Infantil Preferente Verde</h3>
+              <p>Un grupo lleno de energía y pasión por el balonmano. Esta temporada han crecido deportivamente y como
+                equipo, destacando su compromiso en cada entrenamiento.</p>
+            </div>
+          </article>          
 
         </div>
       </div>
@@ -175,19 +187,38 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <img src="img/logo_png.jpg" class="footer-logo" alt="logo">
-        <p>&copy; 2025 Handbol Femení Paiporta</p>
-      </div>
-      <div class="footer-right social">
-        <a href="https://www.instagram.com/handbolfemenipaiporta" target="_blank"><i
-            class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.facebook.com/share/14MVwYFeQBa/" target="_blank"><i
-            class="fa-brands fa-facebook-f"></i></a>
-      </div>
+  <div class="container footer-inner">
+
+    <div class="footer-left">
+      <img src="img/logo_png.jpg" class="footer-logo" alt="Logo Handbol Femení Paiporta">
+
+      <p>
+        &copy; <span id="year"></span> Handbol Femení Paiporta · Todos los derechos reservados
+      </p>
+
+      <p class="footer-credits">
+        Web diseñada y desarrollada por <strong>Hugo Herrero Hernández</strong>
+      </p>
     </div>
+
+    <div class="footer-right social">
+      <a href="https://www.instagram.com/handbolfemenipaiporta" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a href="https://www.facebook.com/share/14MVwYFeQBa/" target="_blank" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+    </div>
+
+  </div>
   </footer>
+
+<!-- Año automático -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
   <!-- Botón para volver arriba -->
   <button id="scrollTopBtn" title="Volver arriba">
     <i class="fa-solid fa-arrow-up"></i>
